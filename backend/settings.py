@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+
+from django.urls import reverse_lazy
+
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -138,6 +141,15 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 SITE_ID = 1
 
 
+LOGIN_REDIRECT_URL = '/admin'
+
+LOGOUT_REDIRECT_URL = '/'
+
+LOGIN_URL = reverse_lazy('login')
+
+LOGOUT_URL = '/'
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -158,6 +170,10 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 # REST FRAMEWORK
